@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <link rel="stylesheet" href="store.css">
+</head>
+<body>
+    <button id="homeBtn" onclick="location.href='Index.html'">Home</button>
+    <h1>Store</h1>
+    <div class="store-container">
+        <div class="player" data-coins="100">
+            <img src="players/player1.png" alt="Player 1" width="100" height="100">
+            <p>100 Coins</p>
+            <button onclick="buyPlayer(100, 'player1.png')">Buy for 100 Coins</button>
+            <button onclick="selectPlayer('player1.png')">Select</button>
+        </div>
+        <div class="player" data-coins="150">
+            <img src="players/player2.png" alt="Player 2" width="100" height="100">
+            <p>150 Coins</p>
+            <button onclick="buyPlayer(150, 'player2.png')">Buy for 150 Coins</button>
+            <button onclick="selectPlayer('player2.png')">Select</button>
+        </div>
+        <div class="player" data-coins="200">
+            <img src="players/player3.png" alt="Player 3" width="100" height="100">
+            <p>200 Coins</p>
+            <button onclick="buyPlayer(200, 'player3.png')">Buy for 200 Coins</button>
+            <button onclick="selectPlayer('player3.png')">Select</button>
+        </div>
+        <div class="player" data-coins="250">
+            <img src="players/player4.png" alt="Player 4" width="100" height="100">
+            <p>250 Coins</p>
+            <button onclick="buyPlayer(250, 'player4.png')">Buy for 250 Coins</button>
+            <button onclick="selectPlayer('player4.png')">Select</button>
+        </div>
+        <div class="player" data-coins="300">
+            <img src="players/player5.png" alt="Player 5" width="100" height="100">
+            <p>300 Coins</p>
+            <button onclick="buyPlayer(300, 'player5.png')">Buy for 300 Coins</button>
+            <button onclick="selectPlayer('player5.png')">Select</button>
+        </div>
+    </div>
+    <script>
+        function buyPlayer(cost, playerImg) {
+            let coins = parseInt(localStorage.getItem('coinCount')) || 0;
+            if (coins >= cost) {
+                coins -= cost;
+                localStorage.setItem('coinCount', coins);
+                localStorage.setItem('selectedPlayer', playerImg);
+                alert('Player purchased successfully!');
+                location.reload();
+            } else {
+                alert('Not enough coins to purchase this player.');
+            }
+        }
+
+        function selectPlayer(playerImg) {
+            localStorage.setItem('selectedPlayer', playerImg);
+            alert('Player selected successfully!');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('coinCount').textContent = localStorage.getItem('coinCount') || 0;
+        });
+    </script>
+</body>
+</html>

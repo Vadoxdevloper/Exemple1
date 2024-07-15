@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="setcar.css">
+</head>
+<body>
+    <div id="settings-container">
+        <button id="homeBtn" onclick="location.href='Index.html'">Home</button>
+        <img id="settingsIcon" src="images/R.jpg" alt="Settings Icon" onclick="location.href='cars.html'">
+    </div>
+    <script>
+        document.getElementById('settingsIcon').onclick = function() {
+            location.href = 'cars.html';
+        };
+    </script>
+</body>
+</html>
